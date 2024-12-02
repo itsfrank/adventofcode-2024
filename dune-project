@@ -14,17 +14,16 @@
 (license MIT)
 
 (package
-  (name aoc2024)
-  (synopsis "frank's advent of code 2024")
-  (description "frank's advent of code 2024")
-  (depends 
-    ocaml
-    containers
-    ;; test
-    (ppx_inline_test :with-test)
-    (ppx_inline_alcotest :with-test)
-    (alcotest :with-test)
-    ;; dev tools
-    (ocamlformat :dev)
-    (ocaml-lsp-server :dev)
-  ))
+ (name aoc2024)
+ (synopsis "frank's advent of code 2024")
+ (description "frank's advent of code 2024")
+ (depends
+  ocaml
+  containers
+  ;; test
+  (ppx_inline_test :with-test)
+  (ppx_inline_alcotest :with-test)
+  (alcotest :with-test)
+  ;; dev tools
+  (ocamlformat :dev)
+  (ocaml-lsp-server :dev)))
