@@ -19,7 +19,7 @@ module Test = struct
     (check int) "s1 sample" 1 res
   ;;
 
-  let%test "s1 main" =
+  let%test "s1 puzzle" =
     let res = Common.resource_file "day_x/puzzle.txt" |> parse_input |> do_part1 in
     (check int) "s1 puzzle" 1 res
   ;;
@@ -29,7 +29,7 @@ module Test = struct
     (check int) "s2 sample" 1 res
   ;;
 
-  let%test "s2 main" =
+  let%test "s2 puzzle" =
     let res = Common.resource_file "day_x/puzzle.txt" |> parse_input |> do_part2 in
     (check int) "s2 puzzle" 1 res
   ;;
