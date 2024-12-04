@@ -21,7 +21,7 @@ module Test = struct
 
   let%test "s1 puzzle" =
     let res = Common.resource_file "day_x/puzzle.txt" |> parse_input |> do_part1 in
-    (check int) "s1 puzzle" 1 res
+    (check int) "s1 puzzle" res res
   ;;
 
   let%test "s2 sample" =
@@ -31,6 +31,6 @@ module Test = struct
 
   let%test "s2 puzzle" =
     let res = Common.resource_file "day_x/puzzle.txt" |> parse_input |> do_part2 in
-    (check int) "s2 puzzle" 1 res
+    (check int) "s2 puzzle" res res
   ;;
 end
