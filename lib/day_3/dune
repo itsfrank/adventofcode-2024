@@ -1,0 +1,8 @@
+(library
+ (name day_3)
+ (libraries aoc_common containers)
+ (inline_tests)
+ (preprocess
+  (pps ppx_inline_alcotest)))
+
+(include_subdirs no)

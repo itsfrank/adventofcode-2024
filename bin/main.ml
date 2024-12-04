@@ -22,17 +22,28 @@ let () =
   Printf.printf "      part2: %d\n" (Day_2.do_part2 day_2_sample);
   print_endline "    puzzle: ";
   Printf.printf "      part1: %d\n" (Day_2.do_part1 day_2_puzzle);
-  Printf.printf "      part2: %d\n" (Day_2.do_part2 day_2_puzzle)
+  Printf.printf "      part2: %d\n" (Day_2.do_part2 day_2_puzzle);
+  (* day_3 *)
+  print_endline " --- ";
+  print_endline "  day_3: ";
+  let day_3_sample = Common.resource_file "day_3/sample.txt" |> Day_3.parse_input in
+  let day_3_puzzle = Common.resource_file "day_3/puzzle.txt" |> Day_3.parse_input in
+  print_endline "    sample: ";
+  Printf.printf "      part1: %d\n" (Day_3.do_part1 day_3_sample);
+  Printf.printf "      part2: %d\n" (Day_3.do_part2 day_3_sample);
+  print_endline "    puzzle: ";
+  Printf.printf "      part1: %d\n" (Day_3.do_part1 day_3_puzzle);
+  Printf.printf "      part2: %d\n" (Day_3.do_part2 day_3_puzzle)
 ;;
 
-(* (* day_x *) *)
+(* ;(* day_x *) *)
 (* print_endline " --- "; *)
 (* print_endline "  day_x: "; *)
 (* let day_x_sample = Common.resource_file "day_x/sample.txt" |> Day_x.parse_input in *)
 (* let day_x_puzzle = Common.resource_file "day_x/puzzle.txt" |> Day_x.parse_input in *)
 (* print_endline "    sample: "; *)
 (* Printf.printf "      part1: %d\n" (Day_x.do_part1 day_x_sample); *)
-(* Printf.printf "      part2: %d\n" (Day_x.do_partx day_x_sample); *)
+(* Printf.printf "      part2: %d\n" (Day_x.do_part2 day_x_sample); *)
 (* print_endline "    puzzle: "; *)
 (* Printf.printf "      part1: %d\n" (Day_x.do_part1 day_x_puzzle); *)
-(* Printf.printf "      part2: %d\n" (Day_x.do_partx day_x_puzzle) *)
+(* Printf.printf "      part2: %d\n" (Day_x.do_part2 day_x_puzzle) *)
