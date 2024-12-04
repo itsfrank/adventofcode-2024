@@ -36,6 +36,8 @@ let () =
   Printf.printf "      part2: %d\n" (Day_3.do_part2 day_3_puzzle)
 ;;
 
+(* replace cmd: `s/_x/_n/g` otherwise you replace the x in '.txt' *)
+
 (* ;(* day_x *) *)
 (* print_endline " --- "; *)
 (* print_endline "  day_x: "; *)
