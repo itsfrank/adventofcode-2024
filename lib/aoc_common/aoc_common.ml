@@ -53,6 +53,19 @@ module Common = struct
       List.iter on_token tokens;
       on_line line)
   ;;
+
+  type tokens =
+    | Newline
+    | Word of string
+
+  let as_tokens file_path =
+    read_lines file_path
+    |> List.map (fun l -> Newline :: (split_whitespace l |> List.map (fun w -> Word w)))
+    |> List.concat
+    |> List.tl (* pop first newline *)
+  ;;
+
+  let string_of_int_list l = "[ " ^ String.concat "; " (List.map Int.to_string l) ^ " ]"
 end
 
 module Test = struct
@@ -102,5 +115,20 @@ module Test = struct
            curr_str := "")
          ~on_token:(fun t -> curr_str := !curr_str ^ t);
     (check (list string)) "parse file" [ "qwer"; "ty"; "ui"; "opa" ] !res
+  ;;
+
+  let%test "files tokens" =
+    let res =
+      Common.resource_file "aoc_common/letter_lines.txt"
+      |> Common.as_tokens
+      |> List.fold_left
+           (fun acc t ->
+             match t with
+             | Common.Newline -> "" :: acc
+             | Common.Word w -> (List.hd acc ^ w) :: List.tl acc)
+           [ "" ]
+      |> List.rev
+    in
+    (check (list string)) "from tokens" [ "qwer"; "ty"; "ui"; "opa" ] res
   ;;
 end
