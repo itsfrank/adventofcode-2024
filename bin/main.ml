@@ -44,7 +44,18 @@ let () =
   Printf.printf "      part2: %d\n" (Day_4.do_part2 day_4_sample);
   print_endline "    puzzle: ";
   Printf.printf "      part1: %d\n" (Day_4.do_part1 day_4_puzzle);
-  Printf.printf "      part2: %d\n" (Day_4.do_part2 day_4_puzzle)
+  Printf.printf "      part2: %d\n" (Day_4.do_part2 day_4_puzzle);
+  (* day_5 *)
+  print_endline " --- ";
+  print_endline "  day_5: ";
+  let day_5_sample = Common.resource_file "day_5/sample.txt" |> Day_5.parse_input in
+  let day_5_puzzle = Common.resource_file "day_5/puzzle.txt" |> Day_5.parse_input in
+  print_endline "    sample: ";
+  Printf.printf "      part1: %d\n" (Day_5.do_part1 day_5_sample);
+  Printf.printf "      part2: %d\n" (Day_5.do_part2 day_5_sample);
+  print_endline "    puzzle: ";
+  Printf.printf "      part1: %d\n" (Day_5.do_part1 day_5_puzzle);
+  Printf.printf "      part2: %d\n" (Day_5.do_part2 day_5_puzzle)
 ;;
 
 (* replace cmd: `s/_x/_n/g` otherwise you replace the x in '.txt' *)

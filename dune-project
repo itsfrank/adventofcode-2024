@@ -20,6 +20,7 @@
  (depends
   ocaml
   containers
+  ppx_string
   ;; test
   (ppx_inline_test :with-test)
   (ppx_inline_alcotest :with-test)

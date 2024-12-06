@@ -54,6 +54,41 @@ module Common = struct
       on_line line)
   ;;
 
+  let split_list ?(remove_empty = true) f l =
+    let rec helper f acc l =
+      match l with
+      | [] -> acc
+      | l_hd :: l_tl ->
+        let acc =
+          if f l_hd
+          then (
+            match acc with
+            | [] -> []
+            | acc_hd :: acc_tl -> [] :: List.rev acc_hd :: acc_tl)
+          else (
+            match acc with
+            | [] -> [ [ l_hd ] ]
+            | acc_hd :: acc_tl -> (l_hd :: acc_hd) :: acc_tl)
+        in
+        helper f acc l_tl
+    in
+    let res =
+      match helper f [] l with
+      | [] -> []
+      | hd :: tl -> List.rev hd :: tl
+    in
+    (if remove_empty
+     then
+       List.filter
+         (fun l ->
+           match l with
+           | [] -> false
+           | _ -> true)
+         res
+     else res)
+    |> List.rev
+  ;;
+
   type tokens =
     | Newline
     | Word of string
@@ -67,6 +102,14 @@ module Common = struct
 
   let string_of_int_list l = "[ " ^ String.concat "; " (List.map Int.to_string l) ^ " ]"
 end
+
+(* printing utils *)
+let print_l f l = l |> List.map f |> String.concat "; " |> Printf.printf "%s\n"
+
+let print_rtn_l f l =
+  print_l f l;
+  l
+;;
 
 module Test = struct
   open Alcotest
@@ -130,5 +173,22 @@ module Test = struct
       |> List.rev
     in
     (check (list string)) "from tokens" [ "qwer"; "ty"; "ui"; "opa" ] res
+  ;;
+
+  let%test "split list" =
+    let res =
+      [ "a"; "b"; ""; "c"; "d"; ""; "e"; "f" ] |> Common.split_list (fun e -> e = "")
+    in
+    let exp = [ [ "a"; "b" ]; [ "c"; "d" ]; [ "e"; "f" ] ] in
+    (check (list (list string))) "split list" exp res
+  ;;
+
+  let%test "split list empty" =
+    let res =
+      [ "a"; "b"; ""; ""; ""; "c"; "d"; ""; "e"; "f" ]
+      |> Common.split_list (fun e -> e = "")
+    in
+    let exp = [ [ "a"; "b" ]; [ "c"; "d" ]; [ "e"; "f" ] ] in
+    (check (list (list string))) "split list" exp res
   ;;
 end
