@@ -1,8 +1,8 @@
 open Aoc_common
 (* open Containers *)
 
-(* converts input into two lists *)
-let parse_input _filename = 1
+let parse_input_impl _lines = 1
+let parse_input filename = filename |> Common.read_lines |> parse_input_impl
 let do_part1 _input = 1
 let do_part2 _input = 1
 
